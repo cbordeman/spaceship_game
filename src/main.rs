@@ -1,9 +1,13 @@
+//#![allow(unused_variables)]
+//#[allow(dead_code)]
+mod asteroid;
 mod camera;
 mod debug;
 mod movement;
 mod spaceship;
 
 use ::bevy::prelude::*;
+use asteroid::AsteroidPlugin;
 use camera::CameraPlugin;
 //use debug::DebugPlugin;
 use movement::MovementPlugin;
@@ -22,6 +26,7 @@ fn main() {
         .add_plugins(SpaceshipPlugin)
         .add_plugins(CameraPlugin)
         .add_plugins(MovementPlugin)
+        .add_plugins(AsteroidPlugin)
         //.add_plugins(DebugPlugin)
         .run();
 }

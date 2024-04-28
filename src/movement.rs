@@ -22,11 +22,24 @@ impl Acceleration {
     }
 }
 
+#[derive(Bundle)]
+pub struct MovingObjectBundle {
+    pub velocity: Velocity,
+    pub acceleration: Acceleration,
+    pub model: SceneBundle,
+}
+
 pub struct MovementPlugin;
 
 impl Plugin for MovementPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Update, update_position);
+        app.add_systems(Update, (update_velocity, update_position));
+    }
+}
+
+fn update_velocity(mut query: Query<(&Acceleration, &mut Velocity)>, time: Res<Time>) {
+    for (acceleration, mut velocity) in query.iter_mut() {
+        velocity.value += acceleration.value * time.delta_seconds();
     }
 }
 
