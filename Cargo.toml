@@ -2,12 +2,30 @@
 name = "spaceship_game"
 version = "0.1.0"
 edition = "2021"
+readme = "../README.md"
+license = "Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+#[features]
+# default = [ "dim3", "async-collider", "debug-render-3d" ]
+# dim3 = []
+# debug-render = [ "debug-render-3d" ]
+# debug-render-2d = [ "bevy/bevy_core_pipeline", "bevy/bevy_sprite", "bevy/bevy_gizmos", "rapier3d/debug-render", "bevy/bevy_asset" ]
+# debug-render-3d = [ "bevy/bevy_core_pipeline", "bevy/bevy_pbr", "bevy/bevy_gizmos", "rapier3d/debug-render", "bevy/bevy_asset" ]
+# parallel = [ "rapier3d/parallel" ]
+# simd-stable = [ "rapier3d/simd-stable" ]
+# simd-nightly = [ "rapier3d/simd-nightly" ]
+# wasm-bindgen = [ "rapier3d/wasm-bindgen" ]
+# serde-serialize = [ "rapier3d/serde-serialize", "bevy/serialize", "serde" ]
+# enhanced-determinism = [ "rapier3d/enhanced-determinism" ]
+# headless = [ ]
+# async-collider = [ "bevy/bevy_asset", "bevy/bevy_scene" ]
 
 [dependencies]
 bevy = "0.13.2"
 rand = "0.8.5"
+#rapier3d = {version = "0.18.0", features = ["simd-stable","parallel"]}
 
 # enable a small amount of optimization in debug mode
 [profile.dev]
@@ -15,3 +33,9 @@ opt-level=1
 
 [profile.dev.package."*"]
 opt-level=3
+ 
+# [profile.dev.package.rapier3d]
+# opt-level=3
+
+# [profile.release]
+# codegen-units = 1
